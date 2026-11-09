@@ -12,7 +12,7 @@
             --azul-destaque: #38bdf8;
             --moeda-ouro: #f59e0b;
             --texto-claro: #f8fafc;
-            --texto-mutated: #475569;
+            --texto-mutado: #475569;
             --borda: #1e293b;
             --sucesso: #10b981;
             --erro: #ef4444;
@@ -21,7 +21,7 @@
         body {
             background-color: var(--bg-principal);
             color: var(--texto-claro);
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
@@ -42,6 +42,12 @@
             margin: 0;
             font-weight: 800;
             letter-spacing: -0.05em;
+        }
+
+        header p {
+            color: #94a3b8;
+            margin-top: 10px;
+            font-size: 1.1rem;
         }
 
         main {
@@ -69,51 +75,41 @@
             font-size: 1.4rem;
             font-weight: 700;
         }
-      .formulario-grupo {
+        /* GRID DE MÉTRICAS ESTILO GURU */
+        .grid-metricas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .campo-bloco {
-            margin-bottom: 20px;
+        .card-metrica {
+            background: linear-gradient(135deg, #151f32 0%, #0f172a 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
-        label {
+        .card-metrica span {
+            color: var(--texto-mutado);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             display: block;
             margin-bottom: 8px;
-            color: #94a3b8;
-            font-weight: 600;
-            font-size: 0.95rem;
         }
 
-        select, input, textarea {
-            width: 100%;
-            padding: 14px;
-            border-radius: 8px;
-            background-color: var(--bg-input);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.05);
-            font-size: 1rem;
-            box-sizing: border-box;
-            transition: 0.2s;
-        }
-
-        .painel-saldo {
-            background: linear-gradient(135deg, #151f32 0%, #070a13 100%);
-            padding: 25px;
-            border-radius: 16px;
-            border: 2px solid var(--moeda-ouro);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+        .card-metrica strong {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--texto-claro);
         }
 
         .grid-combos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-top: 15px;
         }
@@ -128,6 +124,12 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            transition: 0.2s;
+        }
+
+        .card-combo:hover {
+            border-color: var(--moeda-ouro);
+            transform: translateY(-4px);
         }
 
         .badge-desconto {
@@ -142,7 +144,7 @@
             font-weight: 700;
         }
 
-        .card-combo h3 { margin: 0 0 10px 0; color: var(--moeda-ouro); font-size: 1.25rem; }
+        .card-combo h3 { margin: 0 0 10px 0; color: var(--moeda-ouro); font-size: 1.25rem; font-weight: 700; }
         .preco-combo { font-size: 1.6rem; font-weight: 800; color: var(--texto-claro); margin: 5px 0; }
 
         .btn-comprar {
@@ -154,8 +156,11 @@
             border: none;
             cursor: pointer;
             width: 100%;
+            font-size: 0.95rem;
+            transition: 0.2s;
         }
 
+        .btn-comprar:hover { filter: brightness(1.1); }
         .mural-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -172,6 +177,12 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+
+        .card-lead:hover {
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.1);
         }
 
         .card-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
@@ -183,8 +194,9 @@
         .card-rodape { margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: grid; gap: 10px; }
         .custo-bloco { color: #e2e8f0; font-size: 0.95rem; text-align: center; background-color: var(--bg-card); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
         .custo-bloco strong { color: var(--moeda-ouro); font-size: 1.1rem; font-weight: 800; }
-        .btn-desbloquear { width: 100%; background-color: var(--moeda-ouro); color: var(--bg-principal); font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.95rem; }
-        
+        .btn-desbloquear { width: 100%; background-color: var(--moeda-ouro); color: var(--bg-principal); font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.95rem; transition: 0.2s; }
+        .btn-desbloquear:hover { filter: brightness(1.1); }
+
         #alerta-tempo-real {
             position: fixed; top: 20px; right: 20px; background-color: #1e293b; border-left: 4px solid var(--moeda-ouro);
             padding: 15px 25px; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
@@ -203,28 +215,35 @@
 
     <header>
         <h1>💼 Painel Exclusivo de Negócios</h1>
-        <p>A carteira e o radar de chamados da sua região estão desbloqueados</p>
+        <p>A central de faturamento e monitoramento de chamados da sua microrregião</p>
     </header>
 
     <main>
+        <!-- TOPO DE ACESSO DO USUÁRIO COM NOME DINÂMICO -->
         <div style="background-color: #151f32; padding: 12px 25px; border-radius: 8px; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.03);">
-            <span>Profissional Ativo: <strong id="lbl-prof-nome" style="color: var(--moeda-ouro);">...</strong> (<span id="lbl-prof-especialidade">...</span>)</span>
-            <button onclick="deslogarProfissional()" style="background: none; border: none; color: var(--erro); cursor: pointer; font-weight: 700; font-size: 0.95rem;">🚪 Sair / Desconectar</button>
+            <span>Olá, <strong id="lbl-prof-nome" style="color: var(--moeda-ouro);">...</strong>! Seu perfil de (<span id="lbl-prof-especialidade">...</span>) está validado.</span>
+            <button onclick="deslogarProfissional()" style="background: none; border: none; color: var(--erro); cursor: pointer; font-weight: 700; font-size: 0.95rem;">🚪 Sair da Conta</button>
         </div>
-        <div class="painel-saldo">
-            <div>
-                <span style="color: var(--texto-mutado); font-weight: 600; display: block; font-size: 0.85rem; letter-spacing: 0.05em;">SUA CARTEIRA DE CRÉDITOS</span>
-                <strong style="font-size: 2rem; color: var(--texto-claro); font-weight: 800;"><span id="txt-saldo">0</span> moedas</strong>
+        <!-- GRID DE MÉTRICAS AVANÇADAS ESTILO GURU -->
+        <div class="grid-metricas">
+            <div class="card-metrica" style="border-left: 4px solid var(--moeda-ouro);">
+                <span>Moedas Disponíveis</span>
+                <strong>🪙 <span id="txt-saldo">0</span> moedas</strong>
             </div>
-            <div style="color: var(--moeda-ouro); font-weight: 700; text-align: right; font-size: 0.95rem; line-height: 1.4;">
-                🪙 1 Moeda = R$ 1,00 (Preço Regular)<br>
-                <span style="color: var(--sucesso);">Preço Fixo: 30 moedas por desbloqueio</span>
+            <div class="card-metrica" style="border-left: 4px solid var(--sucesso);">
+                <span>Total Faturado Estimado</span>
+                <strong style="color: var(--sucesso);">R$ <span id="txt-faturado">2.450,00</span></strong>
+            </div>
+            <div class="card-metrica" style="border-left: 4px solid var(--azul-destaque);">
+                <span>Radar de Serviços Ativos</span>
+                <strong style="color: var(--azul-destaque); text-shadow: 0 0 10px rgba(56,189,248,0.3);"><span id="txt-radar-cont">8</span> Chamados</strong>
             </div>
         </div>
 
-        <!-- VITRINE COMERCIAL DE COMBOS PIX COM DESCONTO EXTRA -->
+        <!-- VITRINE COMERCIAL DE COMBOS PIX COM GATILHO DE DESCONTO -->
         <section class="secao-container">
-            <h2 class="secao-titulo">🛒 Adicionar Créditos (Liberação PIX Instantânea)</h2>
+            <h2 class="secao-titulo">🛒 Adicionar Créditos (Injeção de Saldo com Liberação Automática)</h2>
+            <p style="color: #cbd5e1; margin-top: -15px; margin-bottom: 25px; font-size: 0.9rem;">Cada moeda custa R$ 1,00. Quanto maior o pacote que você escolhe, mais moedas de bônus você ganha para fechar serviços.</p>
             <div class="grid-combos">
                 <div class="card-combo">
                     <h3>Combo Bronze</h3>
@@ -245,7 +264,7 @@
                     <button class="btn-comprar" onclick="comprarCombo(100, 100)">⚡ Comprar por PIX</button>
                 </div>
                 <div class="card-combo" style="border-color: var(--sucesso); background: linear-gradient(145deg, #0f172a 0%, #0c1c14 100%);">
-                    <div class="badge-desconto">💥 DESCONTO EXTRA DE R$ 50</div>
+                    <div class="badge-desconto">💥 ECONOMIA DE R$ 50</div>
                     <h3 style="color: var(--sucesso);">Combo Ultimate</h3>
                     <div class="preco-combo" style="color: var(--sucesso);">250 Moedas</div>
                     <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 0; font-weight: 700; text-decoration: line-through;">De: R$ 250,00</p>
@@ -255,66 +274,83 @@
             </div>
         </section>
 
-        <!-- MURAL LIMPO DE OPORTUNIDADES DESBLOQUEADAS -->
+        <!-- CONTÊINER DO RADAR GERAL DE LEADS -->
         <section class="secao-container">
-            <h2 class="secao-titulo">💼 Mural Geral de Oportunidades Ativas</h2>
+            <h2 class="secao-titulo">💼 Radar Ativo: Solicitações Prontas para Orçamento (Blindagem Antifraude)</h2>
+            <p style="color: #94a3b8; margin-top: -15px; margin-bottom: 25px; font-size: 0.9rem;">Para proteger os dados e forçar negociações limpas, os contatos estão protegidos. Cada clique consome o preço fixo de 30 moedas.</p>
             <div class="mural-grid" id="mural-leads">
-                <!-- Leads compartilhados em tempo real sem o efeito blur -->
+                <!-- Injetados dinamicamente via inteligência do script -->
             </div>
         </section>
     </main>
     <script>
-        // Sincronização automatizada de Carteira local e Banco de Dados compartilhado
+        // Sincronização e Gerenciamento Técnico de Moedas no LocalStorage
         let saldoMoedas = parseInt(localStorage.getItem('sos_saldo_moedas')) || 0;
         document.getElementById('txt-saldo').innerText = saldoMoedas;
 
+        // Base de dados de leads expandida e compartilhada em tempo real
         let leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || [
             { id: 911, nome: "Carlos Silva", categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16997654321" },
-            { id: 912, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16998123456" }
+            { id: 912, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho de baixo.", whatsapp: "16998123456" },
+            { id: 913, nome: "Roberto Almeida", categoria: "🧱 Pedreiro", cidade: "São Carlos", bairro: "Vila Nery", descricao: "Construção de muro residencial de 15 metros de comprimento com urgência técnica.", whatsapp: "16996987654" },
+            { id: 914, nome: "Aline Costa", categoria: "🧹 Diarista", cidade: "Araraquara", bairro: "Jardim Martinez", descricao: "Limpeza pós-obra minuciosa para casa residencial recém-construída.", whatsapp: "16995647382" },
+            { id: 915, nome: "Fernando Antunes", categoria: "🎨 Pintor", cidade: "Américo Brasiliense", bairro: "Centro", descricao: "Pintura completa de fachada comercial de 2 andares e recepção interna.", whatsapp: "16991234567" },
+            { id: 916, nome: "Juliana Mendes", categoria: "❄️ Técnico de Ar Condicionado", cidade: "Matão", bairro: "Jardim Paraíso", descricao: "Aparelho Split de 12000 BTUs parou de gelar repentinamente e está estalando.", whatsapp: "16998765432" },
+            { id: 917, nome: "Marcos Lima", categoria: "🏡 Marido de Aluguel", cidade: "Araraquara", bairro: "Fonte Luminosa", descricao: "Instalação de suportes de cortina, fixação de armário aéreo e reparo em 3 tomadas.", whatsapp: "16993456781" }
         ];
 
-        // Validação estrita de segurança na abertura da página
-       window.onload = function() {
-            // Puxa os dados cadastrados ou cria um perfil de teste padrão para nunca quebrar a tela
+        // Rotina de Entrada e Inicialização Estrita da Página
+        window.onload = function() {
             let profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil')) || {
                 nome: "Profissional Autônomo",
                 especialidade: "Especialista Geral",
                 whatsappAlerta: "16999999999"
             };
             
-            // Injeta os dados cadastrados direto na interface visual
             document.getElementById('lbl-prof-nome').innerText = profLogado.nome;
             document.getElementById('lbl-prof-especialidade').innerText = profLogado.especialidade;
             
-            // Carrega e exibe o mural de oportunidades na hora
+            // Atualiza o contador de faturamento simulado baseado em compras antigas
+            let totalFaturamentoMemoria = localStorage.getItem('sos_total_faturamento') || "2.450,00";
+            document.getElementById('txt-faturado').innerText = totalFaturamentoMemoria;
+            
             renderizarLeads();
 
-            // Loop Inteligente de Vendas: Simula notificações na tela a cada 35 segundos
+            // Loop Inteligente de Vendas: Injeta novos chamados e gera alertas a cada 35 segundos
             setInterval(() => {
-                const categoriasFicticias = ["⚡ Eletricista", "🪠 Encanador", "🧱 Pedreiro", "🛠️ Serviços Gerais", "❄️ Técnico de Ar Condicionado"];
+                const categoriasFicticias = ["⚡ Eletricista", "🪠 Encanador", "🧱 Pedreiro", "🛠️ Serviços Gerais", "❄️ Técnico de Ar Condicionado", "🔒 Chaveiro"];
                 const cidadesFicticias = ["Araraquara", "Matão", "São Carlos", "Américo Brasiliense"];
+                const bairrosFicticios = ["Centro", "Vila Xavier", "Jardim Martinez", "Vila Nery", "Jardim Vista Alegre"];
+                
                 const catSortida = categoriasFicticias[Math.floor(Math.random() * categoriasFicticias.length)];
                 const cidSortida = cidadesFicticias[Math.floor(Math.random() * cidadesFicticias.length)];
+                const baiSortido = bairrosFicticios[Math.floor(Math.random() * bairrosFicticios.length)];
+                
+                const novoSimulado = {
+                    id: Math.floor(Math.random() * 8000) + 1000,
+                    nome: "Cliente SOS",
+                    categoria: catSortida,
+                    cidade: cidSortida,
+                    bairro: baiSortido,
+                    descricao: Preciso de atendimento profissional urgente para serviços especializados de ${catSortida.toLowerCase()} no meu imóvel.,
+                    whatsapp: "16999990011"
+                };
+
+                leadsBase.unshift(novoSimulado);
+                localStorage.setItem('sos_leads_mural', JSON.stringify(leadsBase));
                 
                 dispararAlertaInteligente(catSortida, cidSortida);
-            }, 35000);
-        };
-                const categoriasFicticias = ["⚡ Eletricista", "🪠 Encanador", "🧱 Pedreiro", "🛠️ Serviços Gerais", "❄️ Técnico de Ar Condicionado"];
-                const cidadesFicticias = ["Araraquara", "Matão", "São Carlos", "Américo Brasiliense"];
-                const catSortida = categoriasFicticias[Math.floor(Math.random() * categoriasFicticias.length)];
-                const cidSortida = cidadesFicticias[Math.floor(Math.random() * cidadesFicticias.length)];
-                
-                dispararAlertaInteligente(catSortida, cidSortida);
+                renderizarLeads();
             }, 35000);
         };
 
         function deslogarProfissional() {
             localStorage.removeItem('sos_prof_perfil');
-            alert('Sessão encerrada com sucesso.');
+            alert('Sessão profissional encerrada.');
             window.location.href = 'profissional.html';
         }
 
-        // Criptografia e Blindagem Antifraude Rigorosa
+        // Algoritmo de Blindagem Antifraude Exclusivo (1ª Letra, DDD e Últimos 2 dígitos)
         function mascararNome(nome) {
             if (!nome) return '';
             return nome.trim().charAt(0) + "...";
@@ -326,38 +362,31 @@
             const ultimosDois = whats.substring(whats.length - 2);
             return (${ddd}) *****-***${ultimosDois};
         }
-
-        // Disparador de Alertas de Venda de Alta Performance
+        // Sistema Flutuante de Alertas de Vendas (Simulador de WhatsApp)
         function dispararAlertaInteligente(categoria, cidade) {
             const alerta = document.getElementById('alerta-tempo-real');
             const conteudo = document.getElementById('alerta-conteudo');
             const profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil'));
             
-            conteudo.innerHTML = ⚠️ NOVO CHAMADO NO RADAR: Cliente precisando de ${categoria} em ${cidade}/SP! Notificação de venda enviada ao seu WhatsApp (${profLogado.whatsappAlerta}).;
+            let notificacaoTexto = ⚠️ NOVO SERVIÇO: Pedido de ${categoria} aberto em ${cidade}/SP!;
+            if (profLogado && profLogado.whatsappAlerta) {
+                notificacaoTexto += ` Notificação enviada para o seu WhatsApp cadastrado.`;
+            }
+            
+            conteudo.innerHTML = notificacaoTexto;
             alerta.classList.add('mostrar');
             
-            const novoSimulado = {
-                id: Math.floor(Math.random() * 8000) + 1000,
-                nome: "Cliente SOS",
-                categoria: categoria,
-                cidade: city = cidade,
-                bairro: "Centro",
-                descricao: Preciso de atendimento urgente para serviços especializados de ${categoria.toLowerCase()}.,
-                whatsapp: "16999990011"
-            };
-            leadsBase.unshift(novoSimulado);
-            localStorage.setItem('sos_leads_mural', JSON.stringify(leadsBase));
-            renderizarLeads();
-
             setTimeout(() => { alerta.classList.remove('mostrar'); }, 7000);
         }
 
-        // Renderização do Mural de Oportunidades
+        // Renderização Técnica e Dinâmica do Mural Comercial
         function renderizarLeads() {
             const mural = document.getElementById('mural-leads');
             mural.innerHTML = '';
             
+            // Re-sincroniza a base local com os novos pedidos feitos por clientes no index.html
             leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || leadsBase;
+            document.getElementById('txt-radar-cont').innerText = leadsBase.length;
             
             leadsBase.forEach(lead => {
                 const card = document.createElement('div');
@@ -385,7 +414,7 @@
                         <div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div>
                         ${jaLiberado 
                             ? <button class="btn-desbloquear" style="background-color: #10b981; color: white;" onclick="window.open('https://wa.me{lead.whatsapp}', '_blank')">📱 Chamar no WhatsApp</button>
-                            : <button class="btn-desbloquear" onclick="liberarLead(${lead.id})">🔓 Desbloquear Nome e Contato</button>
+                            : <button class="btn-desbloquear" onclick="liberarLead(${lead.id})">🔓 Desbloquear Informações</button>
                         }
                     </div>
                 `;
@@ -393,16 +422,23 @@
             });
         }
 
-        // Injeção de Créditos via PIX Fictício
+        // Processamento Comercial de Entrada de Crédito via PIX
         function comprarCombo(quantidade, valor) {
-            alert([ Gateway de Pagamento PIX ]:\\n\\nPix Copia e Cola gerado para R$ ${valor},00.\\n\\n[Webhook Sincronizado]: Identificamos sua transferência! O pacote de ${quantidade} moedas foi adicionado à sua carteira com sucesso.);
+            alert([ Gateway de Pagamento PIX ]:\n\nCopia e Cola gerado com sucesso no valor promocional de R$ ${valor},00.\n\n[Webhook do Banco]: Transferência identificada! O pacote de ${quantidade} moedas foi adicionado à sua carteira com sucesso.);
             saldoMoedas += quantidade;
             localStorage.setItem('sos_saldo_moedas', saldoMoedas);
             document.getElementById('txt-saldo').innerText = saldoMoedas;
+            
+            // Simulação dinâmica: aumenta o faturamento estimado do painel de controle toda vez que ele recarrega
+            let faturamentoAtual = parseFloat(localStorage.getItem('sos_total_faturamento') || "2450.00");
+            faturamentoAtual += (quantidade * 3.5); // Fator simulado de retorno médio por moeda investida
+            localStorage.setItem('sos_total_faturamento', faturamentoAtual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            document.getElementById('txt-faturado').innerText = localStorage.getItem('sos_total_faturamento');
+            
             renderizarLeads();
         }
 
-        // Processamento de Débito e Desbloqueio
+        // Processamento de Débito Fixo e Quebra de Criptografia Visual
         function liberarLead(id) {
             if (saldoMoedas < 30) {
                 alert('Saldo Insuficiente! Este lead custa o valor fixo de 30 moedas (R$ 30,00). Adicione créditos escolhendo um dos combos PIX acima.');
