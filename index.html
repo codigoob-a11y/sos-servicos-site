@@ -175,7 +175,6 @@
             color: var(--bg-principal);
             box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
         }
-
         .painel-saldo {
             background: linear-gradient(135deg, #151f32 0%, #0b0f19 100%);
             padding: 25px;
@@ -232,6 +231,7 @@
         }
 
         .btn-comprar:hover { filter: brightness(1.1); }
+
         .mural-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -255,7 +255,6 @@
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.4);
             border-color: rgba(255,255,255,0.1);
         }
-
         .card-topo {
             display: flex;
             justify-content: space-between;
@@ -557,10 +556,10 @@
         document.getElementById('txt-saldo').innerText = saldoMoedas;
 
         let leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || [
-            { id: 501, nome: "Carlos Silva", categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16997654321" },
-            { id: 502, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16998123456" },
-            { id: 503, nome: "Roberto Almeida", categoria: "🧱 Pedreiro", cidade: "São Carlos", bairro: "Vila Nery", descricao: "Construção de muro residencial de 15 metros com urgência.", whatsapp: "16996987654" },
-            { id: 504, nome: "Aline Costa", categoria: "🧹 Diarista", cidade: "Américo Brasiliense", bairro: "Jardim Vista Alegre", descricao: "Limpeza pós-obra completa para casa de 3 quartos.", whatsapp: "16995647382" }
+            { id: 601, nome: "Carlos Silva", categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16997654321" },
+            { id: 602, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16998123456" },
+            { id: 603, nome: "Roberto Almeida", categoria: "🧱 Pedreiro", cidade: "São Carlos", bairro: "Vila Nery", descricao: "Construção de muro residencial de 15 metros com urgência.", whatsapp: "16996987654" },
+            { id: 604, nome: "Aline Costa", categoria: "🧹 Diarista", cidade: "Américo Brasiliense", bairro: "Jardim Vista Alegre", descricao: "Limpeza pós-obra completa para casa de 3 quartos.", whatsapp: "16995647382" }
         ];
 
         // Lógica de Controle Dinâmico das Abas de Perfil (Cliente vs Profissional)
@@ -604,7 +603,7 @@
             const perfil = { nome, especialidade, email };
             localStorage.setItem('sos_prof_perfil', JSON.stringify(perfil));
             
-            alert(Cadastro realizado com sucesso! Bem-vindo ao SOS Serviços, ${nome}. Sua carteira foi ativada.);
+            alert('Cadastro realizado com sucesso! Bem-vindo ao SOS Serviços. Sua carteira foi habilitada.');
             checarSessaoProfissional();
         }
 
@@ -737,7 +736,7 @@
                 document.getElementById('txt-saldo').innerText = saldoMoedas;
                 
                 localStorage.setItem(lead_pago_adv_${id}, 'true');
-                alert('Aprovado! A proteção antifraude foi desativada para este lead. O nome foi revelado e o botão com o link direto do WhatsApp do cliente está liberado.');
+                alert('Aprovado! A proteção antifraude foi desativada para este lead. O nome foi revelado e o botão com o link direto do WhatsApp del cliente está liberado.');
                 renderizarLeads();
             }
         }
