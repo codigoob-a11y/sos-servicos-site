@@ -58,7 +58,6 @@
             gap: 35px;
         }
 
-        /* BANNER DE NOTIFICAÇÃO INTELLIGENT EM TEMPO REAL */
         #alerta-tempo-real {
             position: fixed;
             top: 20px;
@@ -370,7 +369,6 @@
 </head>
 <body>
 
-    <!-- NOTIFICAÇÃO PUSH INTELIGENTE EM TEMPO REAL -->
     <div id="alerta-tempo-real">
         <span style="font-size: 1.5rem;">🔔</span>
         <div id="alerta-conteudo" style="color: var(--texto-claro); font-size: 0.95rem; font-weight: 600;"></div>
@@ -378,7 +376,7 @@
 
     <header>
         <h1>⚠️ SOS Serviços</h1>
-        <p>Plataforma Inteligente de Intermediação Técnica • Escalonamento Estadual</p>
+        <p>Plataforma Oficial de Intermediação Técnica • Microrregião de Araraquara</p>
     </header>
 
     <div class="menu-perfis">
@@ -387,10 +385,10 @@
     </div>
 
     <main>
-        <!-- TELA DO CLIENTE (ENTRADA SEM LIMITES DE CIDADES E BAIRROS) -->
+        <!-- TELA DO CLIENTE (SOLICITAÇÃO DE PEDIDO COM ENTRADA ABERTA) -->
         <div id="tela-cliente">
             <section class="secao-container">
-                <h2 class="secao-titulo">Solicitar Socorro Técnico Imediato (Grátis)</h2>
+                <h2 class="secao-titulo">Solicitar Socorro Técnico Imediato (Grátis para Clientes)</h2>
                 <form id="form-pedido" onsubmit="cadastrarPedido(event)">
                     <div class="campo-bloco">
                         <label>Seu Nome Completo</label>
@@ -405,6 +403,17 @@
                                 <option value="🪠 Encanador">🪠 Encanador</option>
                                 <option value="🧹 Diarista">🧹 Diarista</option>
                                 <option value="🛠️ Serviços Gerais">🛠️ Serviços Gerais</option>
+                                <option value="🧱 Pedreiro">🧱 Pedreiro / Construtor</option>
+                                <option value="🎨 Pintor">🎨 Pintor Residencial</option>
+                                <option value="❄️ Técnico de Ar Condicionado">❄️ Técnico de Ar Condicionado</option>
+                                <option value="🚗 Mecânico Automotivo">🚗 Mecânico Automotivo</option>
+                                <option value="📱 Técnico de Celular/PC">📱 Técnico de Celular/PC</option>
+                                <option value="🪚 Marceneiro">🪚 Marceneiro / Carpinteiro</option>
+                                <option value="🔒 Chaveiro">🔒 Chaveiro 24h</option>
+                                <option value="🛋️ Estofador">🛋️ Limpeza/Reforma de Estofados</option>
+                                <option value="🌱 Jardineiro">🌱 Jardineiro / Paisagista</option>
+                                <option value="🦟 Dedetizador">🦟 Dedetizador / Controle de Pragas</option>
+                                <option value="🏡 Marido de Aluguel">🏡 Marido de Aluguel (Pequenos Reparos)</option>
                             </select>
                         </div>
                         <div class="campo-bloco">
@@ -419,13 +428,13 @@
                     </div>
 
                     <div class="campo-bloco">
-                        <label>Descrição Detalhada do Problema</label>
-                        <textarea id="form-descricao" placeholder="O que o profissional precisa resolver? Detalhe bem para atrair os melhores especialistas..." rows="4" required></textarea>
+                        <label>Descrição Clara e Detalhada do Problema</label>
+                        <textarea id="form-descricao" placeholder="Descreva em detalhes o que você precisa que o profissional resolva..." rows="3" required></textarea>
                     </div>
 
                     <div class="campo-bloco">
-                        <label>WhatsApp com DDD (Será blindado para sua segurança)</label>
-                        <input type="text" id="form-whatsapp" placeholder="Ex: 16999999999 (Apenas números)" required />
+                        <label>WhatsApp de Contato (Será blindado para sua segurança até o profissional pagar)</label>
+                        <input type="text" id="form-whatsapp" placeholder="Ex: 16999999999 (Apenas números com DDD)" required />
                     </div>
 
                     <button type="submit" class="btn-principal">
@@ -434,7 +443,7 @@
                 </form>
             </section>
         </div>
-        <!-- TELA DO PROFISSIONAL (MURAL MONETIZADO COM MOEDAS FIXAS) -->
+        <!-- TELA DO PROFISSIONAL (MURAL MONETIZADO COM COMBOS FIXOS) -->
         <div id="tela-profissional" style="display: none;">
             <div class="painel-saldo">
                 <div>
@@ -447,9 +456,9 @@
                 </div>
             </div>
 
-            <!-- ADICIONAR CRÉDITOS AUTOMÁTICOS -->
+            <!-- SEÇÃO DE RECARGA DE SALDO COM COMBOS DE NEGÓCIOS -->
             <section class="secao-container" style="margin-bottom: 35px;">
-                <h2 class="secao-titulo">🛒 Adicionar Créditos Instantâneos</h2>
+                <h2 class="secao-titulo">🛒 Adicionar Créditos ao seu Perfil</h2>
                 <div class="grid-combos">
                     <div class="card-combo">
                         <h3>Combo Bronze</h3>
@@ -472,16 +481,16 @@
                 </div>
             </section>
 
-            <!-- MURAL PÚBLICO E COMPLETO COM BLINDAGEM AUTOMÁTICA -->
+            <!-- MURAL GERAL AUTOMÁTICO DE OPORTUNIDADES COM BLINDAGEM -->
             <section class="secao-container">
-                <h2 class="secao-titulo">💼 Mural Geral de Oportunidades (Informações Ocultas)</h2>
+                <h2 class="secao-titulo">💼 Mural Geral de Oportunidades (Contatos Ocultos)</h2>
                 <div class="mural-grid" id="mural-leads">
-                    <!-- Injeção via Script -->
+                    <!-- Os leads injetados via JavaScript aparecem aqui -->
                 </div>
             </section>
         </div>
 
-        <!-- SEÇÃO INFORMATIVA DE MARKETING: COMO FUNCIONA A PLATAFORMA -->
+        <!-- SEÇÃO INFORMATIVA DE MARKETING: REGRAS E ONBOARDING COMERCIAL -->
         <section class="secao-container" style="margin-top: 10px;">
             <h2 class="secao-titulo">💡 Como funciona o SOS Serviços?</h2>
             <div class="info-explicativa-grid">
@@ -507,17 +516,18 @@
         </section>
     </main>
     <script>
-        // Sincronização automática de Carteira e Base de Dados em LocalStorage
+        // Sincronização automatizada de Carteira e Base de Dados em LocalStorage
         let saldoMoedas = parseInt(localStorage.getItem('sos_saldo_moedas')) || 0;
         document.getElementById('txt-saldo').innerText = saldoMoedas;
 
         let leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || [
-            { id: 301, nome: "Carlos Silva", categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16997654321" },
-            { id: 302, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16998123456" },
-            { id: 303, nome: "Roberto Almeida", categoria: "🛠️ Serviços Gerais", cidade: "Américo Brasiliense", bairro: "Jardim Vista Alegre", descricao: "Pintura de portão residencial e pequenos reparos em calçada trincada.", whatsapp: "16996987654" }
+            { id: 401, nome: "Carlos Silva", categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16997654321" },
+            { id: 402, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16998123456" },
+            { id: 403, nome: "Roberto Almeida", categoria: "🧱 Pedreiro", cidade: "São Carlos", bairro: "Vila Nery", descricao: "Construção de muro residencial de 15 metros com urgência.", whatsapp: "16996987654" },
+            { id: 404, nome: "Aline Costa", categoria: "🧹 Diarista", cidade: "Américo Brasiliense", bairro: "Jardim Vista Alegre", descricao: "Limpeza pós-obra completa para casa de 3 quartos.", whatsapp: "16995647382" }
         ];
 
-        // Controle Dinâmico de Navegação entre Telas
+        // Controle de Navegação entre Abas (Cliente vs Profissional)
         function mudarAba(aba) {
             if (aba === 'cliente') {
                 document.getElementById('tela-cliente').style.display = 'block';
@@ -533,7 +543,7 @@
             }
         }
 
-        // Algoritmo de Blindagem Antifraude Rigorosa (Nome parcial, DDD e últimos 2 dígitos)
+        // Algoritmo de Blindagem Antifraude Exclusivo (Exibe 1ª Letra, DDD e Últimos 2 números)
         function mascararNome(nome) {
             if (!nome) return '';
             return nome.trim().charAt(0) + "...";
@@ -546,12 +556,12 @@
             return (${ddd}) *****-***${ultimosDois};
         }
 
-        // Disparador de Alertas e Notificações em Tempo Real
+        // Disparador de Alertas em Tempo Real na Tela
         function dispararAlertaInteligente(categoria, cidade) {
             const alerta = document.getElementById('alerta-tempo-real');
             const conteudo = document.getElementById('alerta-conteudo');
             
-            conteudo.innerHTML = NOVA OPORTUNIDADE: Um cliente acabou de solicitar ${categoria} em ${cidade}/SP! Profissionais qualificados foram notificados via WhatsApp.;
+            conteudo.innerHTML = SISTEMA: Novo chamado de ${categoria} cadastrado em ${cidade}/SP! Profissionais da área foram notificados via WhatsApp.;
             
             alerta.classList.add('mostrar');
             
@@ -560,7 +570,7 @@
             }, 6000);
         }
 
-        // Renderização Estratégica do Mural com Bloqueio de Segurança
+        // Renderização Técnica do Mural de Leads com Proteção Total
         function renderizarLeads() {
             const mural = document.getElementById('mural-leads');
             mural.innerHTML = '';
@@ -569,7 +579,7 @@
                 const card = document.createElement('div');
                 card.className = 'card-lead';
                 
-                // Valida se este lead já foi faturado e comprado por este navegador
+                // Valida se este lead específico já foi faturado e pago por este navegador
                 const jaLiberado = localStorage.getItem(lead_pago_adv_${lead.id});
                 
                 card.innerHTML = `
@@ -589,7 +599,7 @@
                         <div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div>
                         ${jaLiberado 
                             ? <button class="btn-desbloquear" style="background-color: #10b981; color: white;" onclick="window.open('https://wa.me{lead.whatsapp}', '_blank')">📱 Chamar no WhatsApp (${lead.whatsapp})</button>
-                            : <button class="btn-desbloquear" onclick="liberarLead(${lead.id})">🔓 Desbloquear Nome e WhatsApp</button>
+                            : <button class="btn-desbloquear" onclick="liberarLead(${lead.id})">🔓 Desbloquear Nome e Contato</button>
                         }
                     </div>
                 `;
@@ -597,9 +607,9 @@
             });
         }
 
-        // Processamento Automático de Pagamento via PIX Fictício
+        // Processamento Automático de Adição de Créditos via PIX
         function comprarCombo(quantidade, valor) {
-            alert([ Gateway de Pagamento SOS ]:\\n\\nPix Copia e Cola gerado com sucesso para o valor de R$ ${valor},00.\\n\\n[Webhook do Banco]: Confirmamos a identificação do pagamento via Pix! ${quantidade} moedas foram injetadas automaticamente na sua carteira.);
+            alert([ Gateway de Pagamento ]:\\n\\nPix Copia e Cola gerado com sucesso para o valor de R$ ${valor},00.\\n\\n[Webhook Sincronizado]: Confirmamos o recebimento do Pix em nossa conta! ${quantidade} moedas foram adicionadas automaticamente ao seu perfil.);
             saldoMoedas += quantidade;
             localStorage.setItem('sos_saldo_moedas', saldoMoedas);
             document.getElementById('txt-saldo').innerText = saldoMoedas;
@@ -629,41 +639,40 @@
             leadsBase.unshift(novoLead);
             localStorage.setItem('sos_leads_mural', JSON.stringify(leadsBase));
             
-            // Limpa o formulário de captação
+            // Limpa os campos do formulário
             document.getElementById('form-nome').value = '';
             document.getElementById('form-cidade').value = '';
             document.getElementById('form-bairro').value = '';
             document.getElementById('form-descricao').value = '';
             document.getElementById('form-whatsapp').value = '';
             
-            // Dispara o alerta inteligente no topo da tela
+            // Dispara o alerta inteligente e redireciona
             dispararAlertaInteligente(categoria, cidade);
             
-            // Redireciona para o mural mostrando o novo lead blindado instantaneamente
             setTimeout(() => {
                 mudarAba('profissional');
-            }, 1000);
+            }, 1200);
         }
 
-        // Processamento de Débito e Desbloqueio de Dados
+        // Débito Fixo de 30 Moedas com Quebra de Blindagem
         function liberarLead(id) {
             if (saldoMoedas < 30) {
-                alert('Saldo Insuficiente! Cada desbloqueio exige o valor fixo de 30 moedas (R$ 30,00). Adicione créditos escolhendo um dos pacotes Pix acima.');
+                alert('Saldo Insuficiente! Este lead custa o valor fixo de 30 moedas (R$ 30,00). Adicione créditos escolhendo um dos combos PIX acima.');
                 return;
             }
 
-            if (confirm('Deseja utilizar 30 moedas de seu saldo para desbloquear o contato e o nome completo do cliente de forma imediata?')) {
+            if (confirm('Deseja utilizar 30 moedas de seu saldo para desbloquear de forma definitiva o nome completo e o contato real deste cliente?')) {
                 saldoMoedas -= 30;
                 localStorage.setItem('sos_saldo_moedas', saldoMoedas);
                 document.getElementById('txt-saldo').innerText = saldoMoedas;
                 
                 localStorage.setItem(lead_pago_adv_${id}, 'true');
-                alert('Sucesso! A blindagem do lead foi quebrada. O nome do cliente foi revelado e o botão do WhatsApp direto está liberado para negociação.');
+                alert('Aprovado! A proteção antifraude foi desativada para este lead. O nome foi revelado e o botão com o link direto do WhatsApp do cliente está liberado.');
                 renderizarLeads();
             }
         }
 
-        // Inicializa o mural para os profissionais
+        // Inicialização padrão do mural público
         renderizarLeads();
     </script>
 </body>
