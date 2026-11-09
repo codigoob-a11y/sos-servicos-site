@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOS Serviços | Intermediação de Profissionais Especializados</title>
+    <title>SOS Serviços | Intermediação e Monetização Automatizada</title>
     <style>
         :root {
             --bg-principal: #0f172a;
@@ -14,6 +14,7 @@
             --texto-claro: #f8fafc;
             --texto-mutado: #94a3b8;
             --borda: #334155;
+            --sucesso: #22c55e;
         }
 
         body {
@@ -23,7 +24,6 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
-            min-height: '100vh';
         }
 
         header {
@@ -54,6 +54,17 @@
             gap: 40px;
         }
 
+        .painel-saldo {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--moeda-ouro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         .secao-container {
             background-color: var(--bg-card);
             padding: 30px;
@@ -82,6 +93,9 @@
             .formulario-grupo {
                 grid-template-columns: 1fr;
             }
+            .grid-combos {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         .campo-bloco {
@@ -106,11 +120,6 @@
             box-sizing: border-box;
         }
 
-        select:focus, input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--azul-destaque);
-        }
-
         .btn-principal {
             background-color: var(--azul-destaque);
             color: var(--bg-principal);
@@ -124,10 +133,54 @@
             width: 100%;
         }
 
-        .btn-principal:hover {
-            background-color: var(--azul-hover);
+        .grid-combos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }.card-combo {
+            background-color: var(--bg-principal);
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-      .mural-grid {
+
+        .card-combo:hover {
+            border-color: var(--moeda-ouro);
+            transform: translateY(-2px);
+        }
+
+        .card-combo h3 {
+            margin: 0 0 10px 0;
+            color: var(--moeda-ouro);
+            font-size: 1.3rem;
+        }
+
+        .preco-combo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--texto-claro);
+            margin: 10px 0;
+        }
+
+        .btn-comprar {
+            background-color: var(--sucesso);
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .mural-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 25px;
@@ -182,7 +235,7 @@
         .lead-descricao {
             color: var(--texto-mutado);
             font-size: 0.95rem;
-            line-height: '1.5';
+            line-height: 1.5;
             margin: 0;
         }
 
@@ -221,10 +274,6 @@
             font-size: 1rem;
             transition: 0.2s;
         }
-
-        .btn-desbloquear:hover {
-            background-color: #e5a91a;
-        }
     </style>
 </head>
 <body>
@@ -235,26 +284,60 @@
     </header>
 
     <main>
-        
-        <!-- FORMULÁRIO DE CADASTRO DE SERVIÇOS -->
+        <!-- PAINEL DE CONTROLE DE SALDO DE MOEDAS -->
+        <div class="painel-saldo">
+            <div>
+                <span style="color: var(--texto-mutado); font-weight: 500; display: block;">SALDO DO PROFISSIONAL</span>
+                <strong style="font-size: 1.8rem; color: var(--texto-claro);"><span id="txt-saldo">0</span> moedas</strong>
+            </div>
+            <div style="color: var(--moeda-ouro); font-weight: bold; text-align: right; font-size: 0.9rem;">
+                🪙 1 Moeda = R$ 1,00<br>
+                <span style="color: var(--sucesso);">Preço Fixo: 30 moedas por lead</span>
+            </div>
+        </div>
+
+        <!-- COMPRA AUTOMÁTICA DE COMBOS -->
         <section class="secao-container">
-            <h2 class="secao-titulo">Solicitar Socorro Técnico Imediato (Grátis)</h2>
-            
-            <form onsubmit="event.preventDefault(); alert('Pedido de socorro cadastrado com sucesso! Profissionais da região estão sendo acionados no WhatsApp.');" style="display: grid; gap: 5px;">
+            <h2 class="secao-titulo">🛒 Adicionar Créditos (Saldo Instantâneo)</h2>
+            <div class="grid-combos">
+                <div class="card-combo">
+                    <h3>Combo Bronze</h3>
+                    <div class="preco-combo">30 Moedas</div>
+                    <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top: 0;">Valor: R$ 30,00</p>
+                    <button class="btn-comprar" onclick="comprarCombo(30, 30)">⚡ Comprar via PIX</button>
+                </div>
+                <div class="card-combo" style="border-color: var(--azul-destaque);">
+                    <h3 style="color: var(--azul-destaque);">Combo Prata</h3>
+                    <div class="preco-combo">50 Moedas</div>
+                    <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top: 0;">Valor: R$ 50,00</p>
+                    <button class="btn-comprar" style="background-color: var(--azul-destaque);" onclick="comprarCombo(50, 50)">⚡ Comprar via PIX</button>
+                </div>
+                <div class="card-combo" style="border-color: var(--moeda-ouro);">
+                    <h3>Combo Ouro</h3>
+                    <div class="preco-combo">100 Moedas</div>
+                    <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top: 0;">Valor: R$ 100,00</p>
+                    <button class="btn-comprar" style="background-color: var(--moeda-ouro); color: #0f172a;" onclick="comprarCombo(100, 100)">⚡ Comprar via PIX</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO DE PEDIDO DE SERVIÇO GRÁTIS -->
+        <section class="secao-container">
+            <h2 class="secao-titulo">Solicitar Socorro Técnico Imediato (Grátis para Clientes)</h2>
+            <form id="form-pedido" onsubmit="cadastrarPedido(event)">
                 <div class="formulario-grupo">
                     <div class="campo-bloco">
                         <label>Selecione a Categoria</label>
-                        <select>
+                        <select id="form-categoria">
                             <option value="⚡ Eletricista">⚡ Eletricista</option>
                             <option value="🪠 Encanador">🪠 Encanador</option>
                             <option value="🧹 Diarista">🧹 Diarista</option>
                             <option value="🛠️ Serviços Gerais">🛠️ Serviços Gerais</option>
                         </select>
                     </div>
-
                     <div class="campo-bloco">
                         <label>Cidade da Região</label>
-                        <select>
+                        <select id="form-cidade">
                             <option value="Araraquara">Araraquara</option>
                             <option value="Matão">Matão</option>
                             <option value="São Carlos">São Carlos</option>
@@ -264,24 +347,23 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="campo-bloco">
                     <label>Bairro do Atendimento</label>
-                    <input type="text" placeholder="Ex: Vila Xavier, Centro, Jardim Martinez..." required />
+                    <input type="text" id="form-bairro" placeholder="Ex: Vila Xavier, Centro, Jardim Martinez..." required />
                 </div>
 
                 <div class="campo-bloco">
                     <label>Descrição Clara do Problema</label>
-                    <textarea placeholder="Descreva em detalhes o que você precisa que o profissional resolva..." rows="3" required></textarea>
+                    <textarea id="form-descricao" placeholder="Descreva em detalhes o que você precisa que o profissional resolva..." rows="3" required></textarea>
                 </div>
 
                 <div class="campo-bloco">
-                    <label>WhatsApp com DDD (Contato Oculto)</label>
-                    <input type="text" placeholder="Ex: 16999999999 (Apenas números)" required />
+                    <label>WhatsApp com DDD (Oculto até o Profissional Pagar)</label>
+                    <input type="text" id="form-whatsapp" placeholder="Ex: 16999999999 (Apenas números)" required />
                 </div>
 
                 <button type="submit" class="btn-principal">
-                    🚀 Publicar Chamado e Acionar Profissionais
+                    🚀 Publicar Chamado Grátis e Acionar Profissionais
                 </button>
             </form>
         </section>
@@ -289,62 +371,115 @@
         <!-- PAINEL DE LEADS PARA OS PROFISSIONAIS -->
         <section style="margin-top: 10px;">
             <h2 class="secao-titulo">💼 Leads e Pedidos Disponíveis para Liberação</h2>
-            
-            <div class="mural-grid">
-                <!-- CARD 1 -->
-                <div class="card-lead">
-                    <div>
-                        <div class="card-topo">
-                            <span class="tag-categoria">⚡ Eletricista</span>
-                            <span class="lead-id">ID: #001</span>
-                        </div>
-                        <h3>📍 Araraquara</h3>
-                        <p class="lead-bairro">Bairro: Vila Xavier</p>
-                        <p class="lead-descricao">Troca de fiação de chuveiro queimado de urgência. Disjuntor está desarmando ao ligar.</p>
-                    </div>
-                    <div class="card-rodape">
-                        <div class="custo-bloco">Custo do Lead: <strong>5 moedas</strong></div>
-                        <button class="btn-desbloquear" onclick="alert('Para desbloquear as informações de contato do cliente, realize o login em sua conta de profissional.');">🔓 Desbloquear Informações</button>
-                    </div>
-                </div>
-
-                <!-- CARD 2 -->
-                <div class="card-lead">
-                    <div>
-                        <div class="card-topo">
-                            <span class="tag-categoria">🪠 Encanador</span>
-                            <span class="lead-id">ID: #002</span>
-                        </div>
-                        <h3>📍 Matão</h3>
-                        <p class="lead-bairro">Bairro: Centro</p>
-                        <p class="lead-descricao">Vazamento oculto na parede do banheiro. Registro geral foi fechado para conter a água.</p>
-                    </div>
-                    <div class="card-rodape">
-                        <div class="custo-bloco">Custo do Lead: <strong>4 moedas</strong></div>
-                        <button class="btn-desbloquear" onclick="alert('Para desbloquear as informações de contato do cliente, realize o login em sua conta de profissional.');">🔓 Desbloquear Informações</button>
-                    </div>
-                </div>
-
-                <!-- CARD 3 -->
-                <div class="card-lead">
-                    <div>
-                        <div class="card-topo">
-                            <span class="tag-categoria">🧹 Diarista</span>
-                            <span class="lead-id">ID: #003</span>
-                        </div>
-                        <h3>📍 São Carlos</h3>
-                        <p class="lead-bairro">Bairro: Vila Nery</p>
-                        <p class="lead-descricao">Limpeza pós-obra detalhada para apartamento residencial de 2 quartos com urgência.</p>
-                    </div>
-                    <div class="card-rodape">
-                        <div class="custo-bloco">Custo do Lead: <strong>6 moedas</strong></div>
-                        <button class="btn-desbloquear" onclick="alert('Para desbloquear as informações de contato do cliente, realize o login em sua conta de profissional.');">🔓 Desbloquear Informações</button>
-                    </div>
-                </div>
+            <div class="mural-grid" id="mural-leads">
+                <!-- Os leads injetados via JavaScript aparecem de forma profissional aqui -->
             </div>
         </section>
-
     </main>
 
+    <script>
+        // Configuração de Saldo e Base de Dados inicial em localStorage local para não quebrar o site
+        let saldoMoedas = parseInt(localStorage.getItem('sos_saldo_moedas')) || 0;
+        document.getElementById('txt-saldo').innerText = saldoMoedas;
+
+        let leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || [
+            { id: 101, categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16996024411" },
+            { id: 102, categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16997053322" },
+            { id: 103, categoria: "🛠️ Serviços Gerais", cidade: "Américo Brasiliense", bairro: "Jardim Vista Alegre", descricao: "Pintura de portão residencial e pequenos reparos em calçada trincada.", whatsapp: "16998064433" }
+        ];
+
+        // Função comercial para atualizar a lista na tela
+        function renderizarLeads() {
+            const mural = document.getElementById('mural-leads');
+            mural.innerHTML = '';
+            
+            leadsBase.forEach(lead => {
+                const card = document.createElement('div');
+                card.className = 'card-lead';
+                
+                // Verifica se esse lead específico já foi liberado por esse navegador
+                const jaLiberado = localStorage.getItem(lead_desbloqueado_${lead.id});
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="card-topo">
+                            <span class="tag-categoria">${lead.categoria}</span>
+                            <span class="lead-id">ID: #${lead.id}</span>
+                        </div>
+                        <h3>📍 ${lead.cidade}</h3>
+                        <p class="lead-bairro">Bairro: ${lead.bairro}</p>
+                        <p class="lead-descricao">${lead.descricao}</p>
+                    </div>
+                    <div class="card-rodape">
+                        <div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div>
+                        ${jaLiberado 
+                            ? <button class="btn-desbloquear" style="background-color: #22c55e; color: white;" onclick="window.open('https://wa.me{lead.whatsapp}', '_blank')">📱 Chamar no WhatsApp (${lead.whatsapp})</button>
+                            : <button class="btn-desbloquear" style="background-color: #fbbf24; color: #0f172a;" onclick="liberarLead(${lead.id})">🔓 Desbloquear Informações</button>
+                        }
+                    </div>
+                `;
+                mural.appendChild(card);
+            });
+        }
+
+        // Função de Compra Automática dos Combos (Simulação Integrada de Negócios)
+        function comprarCombo(quantidade, valor) {
+            alert(Aviso de Pagamento:\\n\\nPix Copia e Cola gerado para R$ ${valor},00.\\n\\n[Aviso Profissional]: Identificamos seu pagamento via webhook do Gateway. As ${quantidade} moedas foram adicionadas automaticamente ao seu saldo!);
+            saldoMoedas += quantidade;
+            localStorage.setItem('sos_saldo_moedas', saldoMoedas);
+            document.getElementById('txt-saldo').innerText = saldoMoedas;
+            renderizarLeads();
+        }
+
+        // Cadastro Automático do Pedido do Cliente Grátis
+        function cadastrarPedido(e) {
+            e.preventDefault();
+            const categoria = document.getElementById('form-categoria').value;
+            const cidade = document.getElementById('form-cidade').value;
+            const bairro = document.getElementById('form-bairro').value;
+            const descricao = document.getElementById('form-descricao').value;
+            const whatsapp = document.getElementById('form-whatsapp').value.replace(/\\D/g, '');
+
+            const novoLead = {
+                id: Math.floor(Math.random() * 900) + 200,
+                categoria,
+                cidade,
+                bairro,
+                descricao,
+                whatsapp
+            };
+
+            leadsBase.unshift(novoLead);
+            localStorage.setItem('sos_leads_mural', JSON.stringify(leadsBase));
+            
+            document.getElementById('form-bairro').value = '';
+            document.getElementById('form-descricao').value = '';
+            document.getElementById('form-whatsapp').value = '';
+            
+            alert('SOS publicado com sucesso! O chamado já está disponível no mural para os profissionais habilitados na região.');
+            renderizarLeads();
+        }
+
+        // Débito Fixo de 30 Moedas com Liberação Imediata do Telefone
+        function liberarLead(id) {
+            if (saldoMoedas < 30) {
+                alert('Saldo Insuficiente! Cada lead possui o valor fixo de 30 moedas (R$ 30,00). Por favor, compre um de nossos combos de moedas acima para liberar este contato de imediato.');
+                return;
+            }
+
+            if (confirm('Deseja utilizar 30 moedas de seu saldo para desbloquear o contato direto deste cliente?')) {
+                saldoMoedas -= 30;
+                localStorage.setItem('sos_saldo_moedas', saldoMoedas);
+                document.getElementById('txt-saldo').innerText = saldoMoedas;
+                
+                localStorage.setItem(lead_desbloqueado_${id}, 'true');
+                alert('Lead desbloqueado com sucesso! O botão mudará de cor e você poderá falar diretamente com o cliente pelo WhatsApp.');
+                renderizarLeads();
+            }
+        }
+
+        // Inicializa o mural ao abrir a página profissional
+        renderizarLeads();
+    </script>
 </body>
 </html>
