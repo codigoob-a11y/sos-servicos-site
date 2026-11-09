@@ -276,30 +276,31 @@
 </html>
 <script>
         function realizarLoginProfissional(e) {
-            // Trava o recarregamento do navegador na hora para o link funcionar
+            // Intercepta e cancela de vez a atualização padrão do navegador
             if (e && e.preventDefault) e.preventDefault();
             
             const nome = document.getElementById('prof-nome').value;
             const esp = document.getElementById('prof-especialidade').value;
             const whats = document.getElementById('prof-whatsapp-alerta').value.replace(/\D/g, '');
 
-            const perfil = { nome, username: nome, especialidade: esp, whatsappAlerta: whats };
+            const perfil = { nome, username: nome, specialty: esp, especialidade: esp, whatsappAlerta: whats };
             localStorage.setItem('sos_prof_perfil', JSON.stringify(perfil));
             
             alert(Conta ativada com sucesso, ${nome}! Redirecionando para o seu Painel de Moedas e Créditos...);
             
-            // REDIRECIONAMENTO DIRETO PARA A PÁGINA QUE VOCÊ CRIOU
-            window.location.href = 'painel.html';
+            // REDIRECIONAMENTO ABSOLUTO DIRETAMENTE PARA O LINK DO PAINEL ONLINE
+            window.location.href = 'https://sos-servicos-site-qi7x.vercel.app/painel.html';
             return false;
         }
 
-        // Intercepta o envio do formulário assim que a página carrega para evitar travamentos
+        // Bloqueia e substitui a ação padrão de envio do formulário assim que a tela abre
         window.addEventListener('DOMContentLoaded', () => {
             const form = document.querySelector('form');
             if (form) {
-                form.addEventListener('submit', function(event) {
+                form.onsubmit = function(event) {
                     realizarLoginProfissional(event);
-                });
+                    return false;
+                };
             }
         });
     </script>
