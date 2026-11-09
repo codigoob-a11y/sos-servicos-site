@@ -15,7 +15,6 @@
             --texto-mutado: #475569;
             --borda: #1e293b;
             --sucesso: #10b981;
-            --erro: #ef4444;
         }
 
         body {
@@ -41,7 +40,6 @@
             font-size: 2.4rem;
             margin: 0;
             font-weight: 800;
-            letter-spacing: -0.05em;
         }
 
         main {
@@ -52,7 +50,6 @@
             gap: 30px;
         }
 
-        /* FUNIL DE BLOQUEIO VISUAL (BLUR EFEITO VIDRO) */
         .mural-bloqueado-blur {
             position: relative;
             max-height: 480px;
@@ -83,7 +80,6 @@
             padding: 30px;
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .secao-titulo {
@@ -95,6 +91,7 @@
             font-size: 1.4rem;
             font-weight: 700;
         }
+
         .formulario-grupo {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -111,10 +108,9 @@
             margin-bottom: 8px;
             color: #94a3b8;
             font-weight: 600;
-            font-size: 0.95rem;
         }
 
-        select, input, textarea {
+        input {
             width: 100%;
             padding: 14px;
             border-radius: 8px;
@@ -123,13 +119,6 @@
             border: 1px solid rgba(255,255,255,0.05);
             font-size: 1rem;
             box-sizing: border-box;
-            transition: 0.2s;
-        }
-
-        select:focus, input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--moeda-ouro);
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
         }
 
         .btn-principal {
@@ -142,16 +131,12 @@
             cursor: pointer;
             font-size: 1.1rem;
             width: 100%;
-            transition: 0.2s;
         }
-
-        .btn-principal:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
         .mural-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
-            margin-top: 20px;
         }
 
         .card-lead {
@@ -159,22 +144,7 @@
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 14px;
             padding: 22px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
         }
-
-        .card-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .tag-categoria { background-color: rgba(245, 158, 11, 0.1); color: var(--moeda-ouro); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
-        .lead-id { color: #475569; font-size: 0.8rem; font-weight: 600; }
-        .card-lead h3 { margin: 0 0 8px 0; color: var(--texto-claro); font-size: 1.25rem; font-weight: 700; }
-        .lead-bairro { color: #94a3b8; font-size: 0.9rem; margin: 0 0 12px 0; }
-        .lead-descricao { color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; margin: 0; }
-        .card-rodape { margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: grid; gap: 10px; }
-        .custo-bloco { color: #e2e8f0; font-size: 0.95rem; text-align: center; background-color: var(--bg-card); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
-        .custo-bloco strong { color: var(--moeda-ouro); font-size: 1.1rem; font-weight: 800; }
-        .btn-desbloquear { width: 100%; background-color: #475569; color: #fff; font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: not-allowed; font-size: 0.95rem; }
     </style>
 </head>
 <body>
@@ -186,7 +156,7 @@
     </header>
 
     <main>
-        <!-- FORMULÁRIO DE CADASTRO SEM TRAVAS DE VALIDAÇÃO -->
+        <!-- FORMULÁRIO DE CADASTRO -->
         <div id="bloco-autenticacao-prof">
             <section class="secao-container" style="border-color: var(--moeda-ouro);">
                 <h2 class="secao-titulo" style="color: var(--moeda-ouro);">🚀 Passo 1: Libere seu Acesso Gratuito ao Painel</h2>
@@ -215,7 +185,7 @@
         </div>
 
         <!-- RADAR TRAVADO NO BLUR QUE GERA O DESEJO DE COMPRA -->
-        <section class="secao-container" style="padding: 20px 0;">
+        <section class="secao-container" style="padding: 20px 0; margin-top: 25px;">
             <div style="padding: 0 35px;"><h2 class="secao-titulo">💼 Radar em Tempo Real: Chamados Disponíveis na Região</h2></div>
             <div id="wrapper-mural-funil" class="mural-bloqueado-blur">
                 
@@ -227,25 +197,16 @@
                 </div>
 
                 <div style="padding: 0 35px;">
-                    <div class="mural-grid" id="mural-leads">
-                        <!-- Leads estáticos simulados servindo como isca de conversão -->
+                    <div class="mural-grid">
                         <div class="card-lead">
-                            <div>
-                                <div class="card-topo"><span class="tag-categoria">⚡ Eletricista</span><span class="lead-id">ID: #01</span></div>
-                                <h3>📍 Araraquara</h3><p class="lead-bairro"><strong>Bairro:</strong> Vila Xavier</p>
-                                <p style="color:#e2e8f0; font-size:0.95rem; margin-bottom:8px;"><strong>Cliente:</strong> C...</p>
-                                <p class="lead-descricao">Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.</p>
-                            </div>
-                            <div class="card-rodape"><div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div><button class="btn-desbloquear">🔒 Cadastre-se para Liberar</button></div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span style="color:var(--moeda-ouro); font-weight:700;">⚡ Eletricista</span><span style="color:#475569; font-size:0.8rem; font-weight:600;">ID: #01</span></div>
+                            <h3>📍 Araraquara</h3><p style="color:#94a3b8; font-size:0.9rem; margin:0 0 12px 0;"><strong>Bairro:</strong> Vila Xavier</p>
+                            <p style="color:#cbd5e1; font-size:0.95rem; line-height:1.5; margin:0;">Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.</p>
                         </div>
                         <div class="card-lead">
-                            <div>
-                                <div class="card-topo"><span class="tag-categoria">🪠 Encanador</span><span class="lead-id">ID: #02</span></div>
-                                <h3>📍 Matão</h3><p class="lead-bairro"><strong>Bairro:</strong> Centro</p>
-                                <p style="color:#e2e8f0; font-size:0.95rem; margin-bottom:8px;"><strong>Cliente:</strong> M...</p>
-                                <p class="lead-descricao">Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho de baixo.</p>
-                            </div>
-                            <div class="card-rodape"><div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div><button class="btn-desbloquear">🔒 Cadastre-se para Liberar</button></div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:12px;"><span style="color:var(--moeda-ouro); font-weight:700;">🪠 Encanador</span><span style="color:#475569; font-size:0.8rem; font-weight:600;">ID: #02</span></div>
+                            <h3>📍 Matão</h3><p style="color:#94a3b8; font-size:0.9rem; margin:0 0 12px 0;"><strong>Bairro:</strong> Centro</p>
+                            <p style="color:#cbd5e1; font-size:0.95rem; line-height:1.5; margin:0;">Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho de baixo.</p>
                         </div>
                     </div>
                 </div>
@@ -253,49 +214,28 @@
         </section>
     </main>
     <script>
-       <script>
         function realizarLoginProfissional(e) {
-            e.preventDefault();
-            
-            // Puxa as informações digitadas nos campos do formulário
-            const nome = document.getElementById('prof-nome').value;
-            constBox = document.getElementById('prof-especialidade').value;
-            const whatsappAlerta = document.getElementById('prof-whatsapp-alerta').value.replace(/\D/g, '');
-
-            // Salva as credenciais comerciais de forma estruturada no LocalStorage compartilhado
-            const perfil = { nome, especialidade, whatsappAlerta };
-            localStorage.setItem('sos_prof_perfil', JSON.stringify(perfil));
-            
-            alert(Conta ativada com sucesso, ${nome}! Redirecionando para o seu Painel de Moedas e Créditos...);
-            
-            // COMANDO CRUCIAL: Arremessa o profissional de forma instantânea para a nova área separada
-            window.location.href = 'painel.html';
-        }
-    </script>
-</body>
-</html>
-<script>
-        function realizarLoginProfissional(e) {
-            // Intercepta e cancela de vez a atualização padrão do navegador
+            // Cancela imediatamente qualquer recarregamento ou ação padrão do formulário
             if (e && e.preventDefault) e.preventDefault();
             
             const nome = document.getElementById('prof-nome').value;
             const esp = document.getElementById('prof-especialidade').value;
             const whats = document.getElementById('prof-whatsapp-alerta').value.replace(/\D/g, '');
 
-            const perfil = { nome, username: nome, specialty: esp, especialidade: esp, whatsappAlerta: whats };
+            // Armazena com segurança os dados na memória compartilhada
+            const perfil = { nome, especialidade: esp, whatsappAlerta: whats };
             localStorage.setItem('sos_prof_perfil', JSON.stringify(perfil));
             
-            alert(Conta ativada com sucesso, ${nome}! Redirecionando para o seu Painel de Moedas e Créditos...);
+            alert(Conta ativada com sucesso, ${nome}! Redirecionando para o seu Painel de Moedas...);
             
-            // REDIRECIONAMENTO ABSOLUTO DIRETAMENTE PARA O LINK DO PAINEL ONLINE
-            window.location.href = 'https://sos-servicos-site-qi7x.vercel.app/painel.html?';
+            // REDIRECIONAMENTO DIRETO E OBRIGATÓRIO PARA A TELA DE COMBOS
+            window.location.href = 'painel.html';
             return false;
         }
 
-        // Bloqueia e substitui a ação padrão de envio do formulário assim que a tela abre
+        // Intercepta e desativa o envio clássico do HTML assim que a página é carregada
         window.addEventListener('DOMContentLoaded', () => {
-            const form = document.querySelector('form');
+            const form = document.getElementById('form-registro-prof');
             if (form) {
                 form.onsubmit = function(event) {
                     realizarLoginProfissional(event);
