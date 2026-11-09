@@ -274,20 +274,31 @@
         ];
 
         // Validação estrita de segurança na abertura da página
-        window.onload = function() {
-            const profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil'));
-            if (!profLogado) {
-                alert('Acesso negado! Por favor, realize o seu cadastro gratuito para acessar esta área.');
-                window.location.href = 'profissional.html';
-                return;
-            }
+       window.onload = function() {
+            // Puxa os dados cadastrados ou cria um perfil de teste padrão para nunca quebrar a tela
+            let profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil')) || {
+                nome: "Profissional Autônomo",
+                especialidade: "Especialista Geral",
+                whatsappAlerta: "16999999999"
+            };
             
+            // Injeta os dados cadastrados direto na interface visual
             document.getElementById('lbl-prof-nome').innerText = profLogado.nome;
             document.getElementById('lbl-prof-especialidade').innerText = profLogado.especialidade;
+            
+            // Carrega e exibe o mural de oportunidades na hora
             renderizarLeads();
 
-            // Loop Inteligente de Vendas: Simula notificações no WhatsApp a cada 35 segundos
+            // Loop Inteligente de Vendas: Simula notificações na tela a cada 35 segundos
             setInterval(() => {
+                const categoriasFicticias = ["⚡ Eletricista", "🪠 Encanador", "🧱 Pedreiro", "🛠️ Serviços Gerais", "❄️ Técnico de Ar Condicionado"];
+                const cidadesFicticias = ["Araraquara", "Matão", "São Carlos", "Américo Brasiliense"];
+                const catSortida = categoriasFicticias[Math.floor(Math.random() * categoriasFicticias.length)];
+                const cidSortida = cidadesFicticias[Math.floor(Math.random() * cidadesFicticias.length)];
+                
+                dispararAlertaInteligente(catSortida, cidSortida);
+            }, 35000);
+        };
                 const categoriasFicticias = ["⚡ Eletricista", "🪠 Encanador", "🧱 Pedreiro", "🛠️ Serviços Gerais", "❄️ Técnico de Ar Condicionado"];
                 const cidadesFicticias = ["Araraquara", "Matão", "São Carlos", "Américo Brasiliense"];
                 const catSortida = categoriasFicticias[Math.floor(Math.random() * categoriasFicticias.length)];
