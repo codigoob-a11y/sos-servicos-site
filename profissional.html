@@ -253,12 +253,13 @@
         </section>
     </main>
     <script>
+       <script>
         function realizarLoginProfissional(e) {
             e.preventDefault();
             
             // Puxa as informações digitadas nos campos do formulário
             const nome = document.getElementById('prof-nome').value;
-            const especialidade = document.getElementById('prof-especialidade').value;
+            constBox = document.getElementById('prof-especialidade').value;
             const whatsappAlerta = document.getElementById('prof-whatsapp-alerta').value.replace(/\D/g, '');
 
             // Salva as credenciais comerciais de forma estruturada no LocalStorage compartilhado
@@ -270,6 +271,35 @@
             // COMANDO CRUCIAL: Arremessa o profissional de forma instantânea para a nova área separada
             window.location.href = 'painel.html';
         }
+    </script>
+</body>
+</html>
+<script>
+        function realizarLoginProfissional(e) {
+            // Trava o recarregamento do navegador na hora
+            if (e && e.preventDefault) e.preventDefault();
+            
+            const nome = document.getElementById('prof-nome').value;
+            const esp = document.getElementById('prof-especialidade').value;
+            const whats = document.getElementById('prof-whatsapp-alerta').value.replace(/\D/g, '');
+
+            const perfil = { nome, especialidade: esp, whatsappAlerta: whats };
+            localStorage.setItem('sos_prof_perfil', JSON.stringify(perfil));
+            
+            alert(Conta ativada com sucesso, ${nome}! Redirecionando para o seu Painel de Moedas e Créditos...);
+            
+            // Força o redirecionamento absoluto ignorando travas da página
+            window.location.replace('painel.html');
+            return false;
+        }
+
+        // Garante via código que o formulário não vai dar refresh se o profissional apertar Enter
+        window.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', realizarLoginProfissional);
+            }
+        });
     </script>
 </body>
 </html>
