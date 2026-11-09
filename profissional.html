@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radar de Leads Profissionais | SOS Serviços</title>
+    <title>Cadastro do Profissional | SOS Serviços</title>
     <style>
         :root {
             --bg-principal: #070a13;
@@ -147,62 +147,6 @@
 
         .btn-principal:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-        .painel-saldo {
-            background: linear-gradient(135deg, #151f32 0%, #070a13 100%);
-            padding: 25px;
-            border-radius: 16px;
-            border: 2px solid var(--moeda-ouro);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .grid-combos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .card-combo {
-            background-color: var(--bg-principal);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .badge-desconto {
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            background-color: var(--sucesso);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .card-combo h3 { margin: 0 0 10px 0; color: var(--moeda-ouro); font-size: 1.25rem; }
-        .preco-combo { font-size: 1.6rem; font-weight: 800; color: var(--texto-claro); margin: 5px 0; }
-
-        .btn-comprar {
-            background-color: var(--sucesso);
-            color: white;
-            font-weight: 700;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
         .mural-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -230,37 +174,25 @@
         .card-rodape { margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: grid; gap: 10px; }
         .custo-bloco { color: #e2e8f0; font-size: 0.95rem; text-align: center; background-color: var(--bg-card); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
         .custo-bloco strong { color: var(--moeda-ouro); font-size: 1.1rem; font-weight: 800; }
-        .btn-desbloquear { width: 100%; background-color: var(--moeda-ouro); color: var(--bg-principal); font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.95rem; }
-        
-        #alerta-tempo-real {
-            position: fixed; top: 20px; right: 20px; background-color: #1e293b; border-left: 4px solid var(--moeda-ouro);
-            padding: 15px 25px; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
-            display: flex; align-items: center; gap: 12px; z-index: 9999; transform: translateX(150%);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #alerta-tempo-real.mostrar { transform: translateX(0); }
+        .btn-desbloquear { width: 100%; background-color: #475569; color: #fff; font-weight: 700; padding: 12px; border-radius: 8px; border: none; cursor: not-allowed; font-size: 0.95rem; }
     </style>
 </head>
 <body>
 
-    <div id="alerta-tempo-real">
-        <span style="font-size: 1.5rem;">📱</span>
-        <div id="alerta-conteudo" style="color: var(--texto-claro); font-size: 0.95rem; font-weight: 600; max-width: 320px;"></div>
-    </div>
-
     <header>
         <a href="index.html" style="display:inline-block; margin-bottom:15px; color:var(--azul-destaque); text-decoration:none; font-weight:700;">← Ir para Área de Chamados do Cliente (Grátis)</a>
         <h1>💼 Radar de Oportunidades do Profissional</h1>
-        <p>Gatilho de Vendas: Veja os serviços disponíveis antes de investir em créditos</p>
+        <p>Funil de Conversão: Veja os serviços ativos antes de fazer o seu cadastro</p>
     </header>
 
     <main>
-        <!-- FORMULÁRIO DE CADASTRO DO TRABALHADOR (FUNIL DE ENTRADA) -->
+        <!-- FORMULÁRIO DE CADASTRO SEM TRAVAS DE VALIDAÇÃO -->
         <div id="bloco-autenticacao-prof">
             <section class="secao-container" style="border-color: var(--moeda-ouro);">
                 <h2 class="secao-titulo" style="color: var(--moeda-ouro);">🚀 Passo 1: Libere seu Acesso Gratuito ao Painel</h2>
-                <p style="color: #cbd5e1; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem;">Preencha seus dados reais para habilitar sua carteira de moedas e ativar as notificações de chamados no seu celular.</p>
-                <form onsubmit="realizarLoginProfissional(event)">
+                <p style="color: #cbd5e1; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem;">Preencha seus dados para habilitar sua carteira e ser redirecionado para a área de liberação por PIX.</p>
+                
+                <form id="form-registro-prof" onsubmit="realizarLoginProfissional(event)">
                     <div class="campo-bloco">
                         <label>Nome Completo ou Nome do seu Negócio</label>
                         <input type="text" id="prof-nome" placeholder="Ex: Silva Manutenções, Carlos Eletricista..." required />
@@ -271,288 +203,72 @@
                             <input type="text" id="prof-especialidade" placeholder="Ex: Eletricista, Encanador, Pedreiro..." required />
                         </div>
                         <div class="campo-bloco">
-                            <label>Seu WhatsApp Real com DDD (Para receber alertas de serviços)</label>
+                            <label>Seu WhatsApp Real com DDD (Para alertas de novos serviços)</label>
                             <input type="text" id="prof-whatsapp-alerta" placeholder="Ex: 16999999999" required />
                         </div>
                     </div>
                     <button type="submit" class="btn-principal">
-                        🔓 Cadastrar Grátis e Habilitar Painel Monetizado
+                        🔓 Cadastrar Grátis e Entrar no Painel de Moedas
                     </button>
                 </form>
             </section>
         </div>
 
-        <!-- PAINEL LOGADO (MOSTRADO APENAS APÓS CADASTRO) -->
-        <div id="bloco-painel-prof" style="display: none;">
-            <div style="background-color: #151f32; padding: 12px 25px; border-radius: 8px; margin-bottom: 15px; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.03);">
-                <span>Profissional Habilitado: <strong id="lbl-prof-nome" style="color: var(--moeda-ouro);">...</strong> (<span id="lbl-prof-especialidade">...</span>)</span>
-                <button onclick="deslogarProfissional()" style="background: none; border: none; color: var(--erro); cursor: pointer; font-weight: 700; font-size: 0.95rem;">🚪 Sair / Trocar Conta</button>
-            </div>
-
-            <div class="painel-saldo">
-                <div>
-                    <span style="color: var(--texto-mutado); font-weight: 600; display: block; font-size: 0.85rem; letter-spacing: 0.05em;">SUA CARTEIRA DE MOEDAS</span>
-                    <strong style="font-size: 2rem; color: var(--texto-claro); font-weight: 800;"><span id="txt-saldo">0</span> moedas</strong>
-                </div>
-                <div style="color: var(--moeda-ouro); font-weight: 700; text-align: right; font-size: 0.95rem; line-height: 1.4;">
-                    🪙 1 Moeda = R$ 1,00 (Preço Regular)<br>
-                    <span style="color: var(--sucesso);">Preço Fixo: 30 moedas por desbloqueio</span>
-                </div>
-            </div>
-
-            <!-- COMPRA DE COMBOS COM DESCONTO COMERCIAL AGRESSIVO -->
-            <section class="secao-container" style="margin-bottom: 35px;">
-                <h2 class="secao-titulo">🛒 Adicionar Créditos (Liberação PIX Instantânea)</h2>
-                <div class="grid-combos">
-                    <div class="card-combo">
-                        <h3>Combo Bronze</h3>
-                        <div class="preco-combo">30 Moedas</div>
-                        <p style="color: #64748b; font-size: 0.85rem; margin-top: 0; font-weight: 600;">Valor: R$ 30,00</p>
-                        <button class="btn-comprar" onclick="comprarCombo(30, 30)">⚡ Comprar por PIX</button>
-                    </div>
-                    <div class="card-combo">
-                        <h3>Combo Prata</h3>
-                        <div class="preco-combo">50 Moedas</div>
-                        <p style="color: #64748b; font-size: 0.85rem; margin-top: 0; font-weight: 600;">Valor: R$ 50,00</p>
-                        <button class="btn-comprar" onclick="comprarCombo(50, 50)">⚡ Comprar por PIX</button>
-                    </div>
-                    <div class="card-combo">
-                        <h3>Combo Ouro</h3>
-                        <div class="preco-combo">100 Moedas</div>
-                        <p style="color: #64748b; font-size: 0.85rem; margin-top: 0; font-weight: 600;">Valor: R$ 100,00</p>
-                        <button class="btn-comprar" onclick="comprarCombo(100, 100)">⚡ Comprar por PIX</button>
-                    </div>
-                    <div class="card-combo" style="border-color: var(--sucesso); background: linear-gradient(145deg, #0f172a 0%, #0c1c14 100%);">
-                        <div class="badge-desconto">💥 DESCONTO EXTRA DE R$ 50</div>
-                        <h3 style="color: var(--sucesso);">Combo Ultimate</h3>
-                        <div class="preco-combo" style="color: var(--sucesso);">250 Moedas</div>
-                        <p style="color: #94a3b8; font-size: 0.85rem; margin-top: 0; font-weight: 700; text-decoration: line-through;">De: R$ 250,00</p>
-                        <p style="color: var(--texto-claro); font-size: 1rem; margin-top: -10px; font-weight: 800; background-color: var(--sucesso); padding: 4px; border-radius: 4px;">Por: R$ 200,00</p>
-                        <button class="btn-comprar" style="background-color: var(--sucesso);" onclick="comprarCombo(250, 200)">🔥 Levar com Desconto</button>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- RADAR DE LEADS QUE FICA VISÍVEL DE PROPÓSITO E SE TRAVA COM EFEITO BLUR -->
+        <!-- RADAR TRAVADO NO BLUR QUE GERA O DESEJO DE COMPRA -->
         <section class="secao-container" style="padding: 20px 0;">
             <div style="padding: 0 35px;"><h2 class="secao-titulo">💼 Radar em Tempo Real: Chamados Disponíveis na Região</h2></div>
             <div id="wrapper-mural-funil" class="mural-bloqueado-blur">
                 
-                <!-- TRAVA DE CONVERSÃO EXCLUSIVA DO SEU FUNIL -->
-                <div id="trava-cadastro-overlay" class="trava-overlay">
+                <!-- OVERLAY GIGANTE DE COBRANÇA PSICOLÓGICA -->
+                <div class="trava-overlay">
                     <span style="font-size: 3.5rem; margin-bottom: 15px;">🔒</span>
                     <h3 style="margin: 0 0 10px 0; font-size: 1.5rem; font-weight: 800; text-align: center; color: #fff;">Mural Bloqueado Temporariamente</h3>
-                    <p style="color: #cbd5e1; text-align: center; max-width: 500px; margin: 0 0 20px 0; font-size: 1rem; line-height: 1.5;">Identificamos novos pedidos de serviços abertos em Araraquara, Matão e São Paulo neste instante. Faça seu cadastro gratuito acima para desbloquear a visão do radar!</p>
+                    <p style="color: #cbd5e1; text-align: center; max-width: 500px; margin: 0 0 20px 0; font-size: 1rem; line-height: 1.5;">Identificamos novos pedidos de serviços abertos na microrregião de Araraquara, Matão e São Carlos neste instante. Faça seu cadastro gratuito acima para destravar a visão e acessar o painel de compras!</p>
                 </div>
 
                 <div style="padding: 0 35px;">
                     <div class="mural-grid" id="mural-leads">
-                        <!-- Leads injetados permanentemente via script -->
+                        <!-- Leads estáticos simulados servindo como isca de conversão -->
+                        <div class="card-lead">
+                            <div>
+                                <div class="card-topo"><span class="tag-categoria">⚡ Eletricista</span><span class="lead-id">ID: #01</span></div>
+                                <h3>📍 Araraquara</h3><p class="lead-bairro"><strong>Bairro:</strong> Vila Xavier</p>
+                                <p style="color:#e2e8f0; font-size:0.95rem; margin-bottom:8px;"><strong>Cliente:</strong> C...</p>
+                                <p class="lead-descricao">Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.</p>
+                            </div>
+                            <div class="card-rodape"><div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div><button class="btn-desbloquear">🔒 Cadastre-se para Liberar</button></div>
+                        </div>
+                        <div class="card-lead">
+                            <div>
+                                <div class="card-topo"><span class="tag-categoria">🪠 Encanador</span><span class="lead-id">ID: #02</span></div>
+                                <h3>📍 Matão</h3><p class="lead-bairro"><strong>Bairro:</strong> Centro</p>
+                                <p style="color:#e2e8f0; font-size:0.95rem; margin-bottom:8px;"><strong>Cliente:</strong> M...</p>
+                                <p class="lead-descricao">Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho de baixo.</p>
+                            </div>
+                            <div class="card-rodape"><div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div><button class="btn-desbloquear">🔒 Cadastre-se para Liberar</button></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
     <script>
-        // Sincronização automatizada da carteira de crédito local
-        let saldoMoedas = parseInt(localStorage.getItem('sos_saldo_moedas')) || 0;
-        document.getElementById('txt-saldo').innerText = saldoMoedas;
-
-        // Base de dados inicial expandida para criar efeito de urgência instantânea no funil
-        let leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || [
-            { id: 911, nome: "Carlos Silva", categoria: "⚡ Eletricista", cidade: "Araraquara", bairro: "Vila Xavier", descricao: "Troca de fiação de chuveiro queimado de urgência. O disjuntor geral está desarmando.", whatsapp: "16997654321" },
-            { id: 912, nome: "Mariana Souza", categoria: "🪠 Encanador", cidade: "Matão", bairro: "Centro", descricao: "Vazamento grave oculto na parede do banheiro que está infiltrando no vizinho.", whatsapp: "16998123456" },
-            { id: 913, nome: "Roberto Almeida", categoria: "🧱 Pedreiro", cidade: "São Carlos", bairro: "Vila Nery", descricao: "Construção de muro residencial de 15 metros de comprimento com urgência.", whatsapp: "16996987654" },
-            { id: 914, nome: "Aline Costa", categoria: "🧹 Diarista", cidade: "Araraquara", bairro: "Jardim Martinez", descricao: "Limpeza pós-obra detalhada para casa residencial recém-pintada.", whatsapp: "16995647382" },
-            { id: 915, nome: "Fernando Antunes", categoria: "🎨 Pintor", cidade: "Américo Brasiliense", bairro: "Centro", descricao: "Pintura completa de fachada comercial e duas salas internas.", whatsapp: "16991234567" },
-            { id: 916, nome: "Juliana Mendes", categoria: "❄️ Técnico de Ar Condicionado", cidade: "Matão", bairro: "Jardim paraíso", descricao: "Aparelho de ar condicionado de 12000 BTUs parou de gelar repentinamente.", whatsapp: "16998765432" },
-            { id: 917, nome: "Marcos Lima", categoria: "🏡 Marido de Aluguel", cidade: "Araraquara", bairro: "Fonte Luminosa", descricao: "Instalação de 4 suportes de cortina, 2 prateleiras e troca de 3 tomadas.", whatsapp: "16993456781" }
-        ];
-
-        // Roda as rotinas automáticas do funil de conversão assim que o site carrega
-        window.onload = function() {
-            checarSessaoProfissional();
-            renderizarLeads();
-            
-            // Loop Inteligente de Notificações: Dispara novos chamados simulados a cada 35 segundos
-            setInterval(() => {
-                const categoriasFicticias = ["⚡ Eletricista", "🪠 Encanador", "🧱 Pedreiro", "🛠️ Serviços Gerais", "❄️ Técnico de Ar Condicionado", "🔒 Chaveiro"];
-                const cidadesFicticias = ["Araraquara", "Matão", "São Carlos", "Américo Brasiliense", "Ibaté"];
-                const bairrosFicticios = ["Centro", "Vila Xavier", "Jardim América", "Vila Nery", "Jardim Martinez"];
-                
-                const catSortida = categoriasFicticias[Math.floor(Math.random() * categoriasFicticias.length)];
-                const cidSortida = cidadesFicticias[Math.floor(Math.random() * cidadesFicticias.length)];
-                const baiSortido = bairrosFicticios[Math.floor(Math.random() * bairrosFicticios.length)];
-                
-                const novoSimulado = {
-                    id: Math.floor(Math.random() * 8000) + 1000,
-                    nome: "Cliente SOS",
-                    categoria: catSortida,
-                    cidade: cidSortida,
-                    bairro: baiSortido,
-                    descricao: Preciso de socorro imediato para serviços especializados de ${catSortida.toLowerCase()} em meu imóvel residencial.,
-                    whatsapp: "16999990011"
-                };
-
-                leadsBase.unshift(novoSimulado);
-                localStorage.setItem('sos_leads_mural', JSON.stringify(leadsBase));
-                
-                dispararAlertaInteligente(catSortida, cidSortida);
-                renderizarLeads();
-            }, 35000);
-        };
-
-        // Validação e Controle do Efeito Blur de Acordo com o Login
-        function checarSessaoProfissional() {
-            const profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil'));
-            const wrapper = document.getElementById('wrapper-mural-funil');
-            const overlay = document.getElementById('trava-cadastro-overlay');
-            
-            if (profLogado) {
-                // Remove travas e desfoques, abrindo a carteira monetizada
-                document.getElementById('bloco-autenticacao-prof').style.display = 'none';
-                document.getElementById('bloco-painel-prof').style.display = 'block';
-                document.getElementById('lbl-prof-nome').innerText = profLogado.nome;
-                document.getElementById('lbl-prof-especialidade').innerText = profLogado.especialidade;
-                
-                wrapper.classList.remove('mural-bloqueado-blur');
-                overlay.style.display = 'none';
-            } else {
-                // Ativa o bloqueio do funil forçando o profissional a preencher os dados
-                document.getElementById('bloco-autenticacao-prof').style.display = 'block';
-                document.getElementById('bloco-painel-prof').style.display = 'none';
-                
-                wrapper.classList.add('mural-bloqueado-blur');
-                overlay.style.display = 'flex';
-            }
-        }
         function realizarLoginProfissional(e) {
             e.preventDefault();
+            
+            // Puxa as informações digitadas nos campos do formulário
             const nome = document.getElementById('prof-nome').value;
             const especialidade = document.getElementById('prof-especialidade').value;
             const whatsappAlerta = document.getElementById('prof-whatsapp-alerta').value.replace(/\D/g, '');
 
+            // Salva as credenciais comerciais de forma estruturada no LocalStorage compartilhado
             const perfil = { nome, especialidade, whatsappAlerta };
             localStorage.setItem('sos_prof_perfil', JSON.stringify(perfil));
             
-            alert(Sua conta de profissional autônomo foi ativada com sucesso, ${nome}! O painel e a carteira de moedas foram liberados.);
-            checarSessaoProfissional();
-            renderizarLeads();
-        }
-
-        function deslogarProfissional() {
-            localStorage.removeItem('sos_prof_perfil');
-            alert('Sessão profissional encerrada.');
-            checarSessaoProfissional();
-            renderizarLeads();
-        }
-
-        // Algoritmo de Blindagem Antifraude Rigorosa (Exibe 1ª Letra, DDD e Últimos 2 números)
-        function mascararNome(nome) {
-            if (!nome) return '';
-            return nome.trim().charAt(0) + "...";
-        }
-
-        function mascararWhatsApp(whats) {
-            if (!whats || whats.length < 10) return '(XX) ***-XXXX';
-            const ddd = whats.substring(0, 2);
-            const ultimosDois = whats.substring(whats.length - 2);
-            return (${ddd}) *****-***${ultimosDois};
-        }
-
-        // Disparador de Alertas em Tempo Real na Tela (Simulador do Ganho Psicológico do WhatsApp)
-        function dispararAlertaInteligente(categoria, cidade) {
-            const alerta = document.getElementById('alerta-tempo-real');
-            const conteudo = document.getElementById('alerta-conteudo');
-            const profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil'));
+            alert(Conta ativada com sucesso, ${nome}! Redirecionando para o seu Painel de Moedas e Créditos...);
             
-            let textoNotificacao = ⚠️ NOVO CHAMADO: Cliente solicitou ${categoria} em ${cidade}/SP!;
-            if (profLogado) {
-                textoNotificacao += ` Alerta instantâneo disparado para o seu WhatsApp (${profLogado.whatsappAlerta}).`;
-            }
-            
-            conteudo.innerHTML = textoNotificacao;
-            alerta.classList.add('mostrar');
-            
-            setTimeout(() => {
-                alerta.classList.remove('mostrar');
-            }, 7000);
-        }
-
-        // Renderização Técnica e Dinâmica do Mural de Oportunidades
-        function renderizarLeads() {
-            const mural = document.getElementById('mural-leads');
-            mural.innerHTML = '';
-            
-            // Sincroniza o banco de dados local com as postagens reais enviadas pelo index.html
-            leadsBase = JSON.parse(localStorage.getItem('sos_leads_mural')) || leadsBase;
-            
-            leadsBase.forEach(lead => {
-                const card = document.createElement('div');
-                card.className = 'card-lead';
-                
-                const jaLiberado = localStorage.getItem(lead_pago_adv_${lead.id});
-                
-                card.innerHTML = `
-                    <div>
-                        <div class="card-topo">
-                            <span class="tag-categoria">${lead.categoria}</span>
-                            <span class="lead-id">ID: #${lead.id}</span>
-                        </div>
-                        <h3>📍 ${lead.cidade}</h3>
-                        <p class="lead-bairro"><strong>Bairro:</strong> ${lead.bairro}</p>
-                        <p style="color: #e2e8f0; font-size: 0.95rem; margin-bottom: 8px;">
-                            <strong>Cliente:</strong> ${jaLiberado ? lead.nome : mascararNome(lead.nome)}
-                        </p>
-                        <p style="color: var(--moeda-ouro); font-size: 0.95rem; margin-bottom: 15px;">
-                            <strong>WhatsApp:</strong> ${jaLiberado ? lead.whatsapp : mascararWhatsApp(lead.whatsapp)}
-                        </p>
-                        <p class="lead-descricao">${lead.descricao}</p>
-                    </div>
-                    <div class="card-rodape">
-                        <div class="custo-bloco">Custo do Lead: <strong>30 moedas</strong></div>
-                        ${jaLiberado 
-                            ? <button class="btn-desbloquear" style="background-color: #10b981; color: white;" onclick="window.open('https://wa.me{lead.whatsapp}', '_blank')">📱 Chamar no WhatsApp</button>
-                            : <button class="btn-desbloquear" onclick="liberarLead(${lead.id})">🔓 Desbloquear Nome e Contato</button>
-                        }
-                    </div>
-                `;
-                mural.appendChild(card);
-            });
-        }
-
-        // Processamento de Pagamento Simulando Gateways de Alta Performance
-        function comprarCombo(quantidade, valor) {
-            alert([ Gateway de Pagamento PIX ]:\\n\\nPix Copia e Cola gerado com sucesso no valor promocional de R$ ${valor},00.\\n\\n[Sincronização Webhook]: Identificamos sua transferência bancária! O pacote de ${quantidade} moedas foi adicionado à sua carteira com sucesso.);
-            saldoMoedas += quantidade;
-            localStorage.setItem('sos_saldo_moedas', saldoMoedas);
-            document.getElementById('txt-saldo').innerText = saldoMoedas;
-            renderizarLeads();
-        }
-
-        // Débito Fixo de 30 Moedas com Quebra de Blindagem e Geração do Link Direto
-        function liberarLead(id) {
-            const profLogado = JSON.parse(localStorage.getItem('sos_prof_perfil'));
-            if (!profLogado) {
-                alert('Acesso Bloqueado! Por favor, realize o seu cadastro gratuito no formulário do topo da página antes de tentar desbloquear os leads.');
-                return;
-            }
-
-            if (saldoMoedas < 30) {
-                alert('Saldo Insuficiente! Este lead custa o valor fixo de 30 moedas (R$ 30,00). Adicione créditos escolhendo um dos combos PIX acima.');
-                return;
-            }
-
-            if (confirm('Deseja utilizar 30 moedas de seu saldo para desbloquear de forma definitiva o nome completo e o contato real deste cliente?')) {
-                saldoMoedas -= 30;
-                localStorage.setItem('sos_saldo_moedas', saldoMoedas);
-                document.getElementById('txt-saldo').innerText = saldoMoedas;
-                
-                localStorage.setItem(lead_pago_adv_${id}, 'true');
-                alert('Transação Aprovada! A blindagem do lead foi removida. O nome completo e o botão com o link direto do WhatsApp do cliente já estão liberados.');
-                renderizarLeads();
-            }
+            // COMANDO CRUCIAL: Arremessa o profissional de forma instantânea para a nova área separada
+            window.location.href = 'painel.html';
         }
     </script>
 </body>
